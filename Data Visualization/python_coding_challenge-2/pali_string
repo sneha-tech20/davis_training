@@ -1,0 +1,9 @@
+# Program to check palindrome string
+
+text = input("Enter string: ")
+
+# compare string with its reverse
+if text == text[::-1]:
+    print("Yes")
+else:
+    print("No")
