@@ -1,0 +1,8 @@
+with open("input.txt", "r") as f:
+    lines = f.readlines()
+
+with open("reverse.txt", "w") as out:
+    for line in reversed(lines):
+        out.write(line)
+
+print("Reversed file created")
