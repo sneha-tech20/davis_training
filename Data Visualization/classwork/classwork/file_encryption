@@ -1,0 +1,18 @@
+shift = 3
+
+with open("input.txt", "r") as f:
+    text = f.read()
+
+result = ""
+
+for ch in text:
+    if ch.isalpha():
+        base = 'A' if ch.isupper() else 'a'
+        result += chr((ord(ch) - ord(base) + shift) % 26 + ord(base))
+    else:
+        result += ch
+
+with open("encrypted.txt", "w") as out:
+    out.write(result)
+
+print("File encrypted")
