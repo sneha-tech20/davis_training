@@ -1,0 +1,19 @@
+sales = {}
+max_product = ("", 0)
+
+with open("sales.txt") as f:
+    for line in f:
+        try:
+            p, c, price, qty = line.strip().split(",")
+            price, qty = float(price), int(qty)
+
+            total = price * qty
+            sales[c] = sales.get(c, 0) + total
+
+            if total > max_product[1]:
+                max_product = (p, total)
+        except:
+            continue
+
+print("Category Sales:", sales)
+print("Top Product:", max_product)
