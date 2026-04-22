@@ -1,0 +1,66 @@
+Documentation
+Title: Reading a Text File from GitHub Repository in Google Colab using Python
+1.Objective
+
+To read a text file stored in a GitHub repository directly into a Python program using Google Colab.
+
+2.Concept / Theory
+
+GitHub files are normally accessed using a URL, but raw files cannot be directly read using standard file handling methods unless converted into a raw format link.
+
+Google Colab allows fetching such files using:
+
+requests module
+urllib module
+Direct file reading via raw URL
+A. Requirements
+Google Colab environment
+Internet connection
+GitHub repository file link
+B. Step 1: Get Raw File URL from GitHub
+Open your file on GitHub
+Click on "Raw" button
+Copy the URL
+
+Example:
+
+https://raw.githubusercontent.com/username/repo/main/file1.txt
+C.Step 2: Python Code (Method 1 – Using requests)
+import requests
+
+# Raw file URL
+url = "https://raw.githubusercontent.com/username/repo/main/file1.txt"
+
+# Send request to fetch file
+response = requests.get(url)
+
+# Check if request successful
+if response.status_code == 200:
+    data = response.text
+    print("File Content:\n")
+    print(data)
+else:
+    print("Failed to retrieve file")
+D.Step 3: Python Code (Method 2 – Using urllib)
+import urllib.request
+
+url = "https://raw.githubusercontent.com/username/repo/main/file1.txt"
+
+# Open URL and read data
+file = urllib.request.urlopen(url)
+
+content = file.read().decode('utf-8')
+
+print("File Content:\n")
+print(content)
+E.Step 4: Save File Locally in Colab (Optional)
+with open("downloaded_file.txt", "w") as f:
+    f.write(content)
+
+print("File saved successfully")
+F. Explanation of Logic
+Convert GitHub file → Raw URL
+Send request to server
+Fetch file content as text
+Decode (if needed)
+Print or store locally
