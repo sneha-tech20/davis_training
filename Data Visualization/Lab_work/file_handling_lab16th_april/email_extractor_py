@@ -1,0 +1,14 @@
+import re
+
+pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+'
+
+with open("data.txt", "r") as f:
+    content = f.read()
+
+emails = re.findall(pattern, content)
+
+with open("emails.txt", "w") as out:
+    for email in emails:
+        out.write(email + "\n")
+
+print("Emails extracted.")

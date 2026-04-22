@@ -1,0 +1,9 @@
+seen = set()
+
+with open("input.txt", "r") as f, open("unique.txt", "w") as out:
+    for line in f:
+        if line not in seen:
+            out.write(line)
+            seen.add(line)
+
+print("Duplicates removed.")
